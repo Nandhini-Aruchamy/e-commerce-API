@@ -30,7 +30,7 @@ builder.Services.AddAuthorization();
 
 
 
-//// JWT Authentication configuration
+// JWT Authentication configuration
 //var jwtSettings = builder.Configuration.GetSection("Jwt");
 //builder.Services.AddAuthentication(options =>
 //{
@@ -56,10 +56,17 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>
     {
-        builder.AllowAnyOrigin()
+        //builder.WithOrigins("https://ecommerce-shell.redmeadow-db5f70a9.eastus.azurecontainerapps.io")
+        builder.WithOrigins("http://localhost:4200")
                .AllowAnyMethod()
-               .AllowAnyHeader();
+               .AllowAnyHeader()
+               .AllowCredentials();
     });
+});
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5000);
 });
 
 var app = builder.Build();
@@ -71,13 +78,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
+// Important: Use CORS before Authentication and Authorization
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-// Use the CORS middleware
-app.UseCors("AllowAll");
 
 app.MapControllers();
 
