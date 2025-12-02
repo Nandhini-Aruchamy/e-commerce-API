@@ -3,7 +3,7 @@
 A .NET 8 Web API backend service for an e-commerce frontend application, created for learning purposes. This API provides authentication and product management functionality.
 
 ## 🌐 Live Demo
-API is deployed at: http://ecommerce-api-prod-demo.eastus.azurecontainer.io:5000/
+API is deployed at: https://ecommerce-api.redmeadow-db5f70a9.eastus.azurecontainerapps.io/weatherforecast
 
 ## 🛠 Technologies Used
 - .NET 8
@@ -11,7 +11,7 @@ API is deployed at: http://ecommerce-api-prod-demo.eastus.azurecontainer.io:5000
 - JWT Authentication
 - SQL Server
 - Docker
-- Azure Container Instances
+- Azure Container App
 
 ## 🔑 API Endpoints
 
@@ -52,11 +52,13 @@ All product endpoints require authentication (JWT token)
   - Requires: Authorization header with JWT token
 
 ## 🔒 Authentication
-The API uses JWT (JSON Web Token) authentication. To access protected endpoints:
-1. Register a user account
-2. Login to get the JWT token
-3. Include the token in the Authorization header:
-   `Authorization: Bearer {your-token}`
+The API uses Auth0 for authentication. To access protected endpoints:
+  1. Register a user account via Auth0 or your app’s signup page
+
+  2. Login to get an Auth0 access token
+
+  3. Include the token in the Authorization header:
+     Authorization: Bearer {your-auth0-token}
 
 ## 💾 Database
 The application uses SQL Server for data storage. The database schema includes:
@@ -82,13 +84,10 @@ The application uses SQL Server for data storage. The database schema includes:
 
 ## 📝 Notes
 - This is a learning project demonstrating .NET 8 Web API development
-- Implements secure authentication using JWT
+- Implements secure authentication using Auth0/JWT
 - Uses Entity Framework Core for database operations
 - Containerized using Docker for easy deployment
 - Deployed on Azure Container Instances
 
 ## 🤝 Contributing
 This is a learning project, but contributions are welcome! Feel free to submit issues and pull requests.
-
-## 📄 License
-This project is open source and available under the [MIT License](LICENSE).
