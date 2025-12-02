@@ -15,30 +15,6 @@ API is deployed at: https://ecommerce-api.redmeadow-db5f70a9.eastus.azurecontain
 
 ## 🔑 API Endpoints
 
-### Authentication
-- **POST** `/api/Login/register`
-  - Register a new user
-  - Body: 
-    ```json
-    {
-        "username": "string",
-        "email": "string",
-        "password": "string",
-        "role": "string" (optional, defaults to "customer")
-    }
-    ```
-
-- **POST** `/api/Login/login`
-  - Login user
-  - Body:
-    ```json
-    {
-        "email": "string",
-        "password": "string"
-    }
-    ```
-  - Returns: JWT token and user details
-
 ### Products
 All product endpoints require authentication (JWT token)
 
